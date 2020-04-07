@@ -1,5 +1,39 @@
-<div class="grid-x">
+<div class="grid-x" id="main">
+
   <app-sidebar></app-sidebar>
-  <app-songs></app-songs>
-  <app-footer></app-footer>
+  <router-outlet></router-outlet>
+
+  <footer class="grid-x">
+
+    <div class="cell small-2" id='info'>
+      <p>
+        Long Song Name with Stuff In it (feat. Blah)
+        <!-- {{ song?.name }} -->
+      </p>
+    </div>
+    <div class="cell small-8" id='controls'>
+      <div class="grid-x" id="progress-bar">
+        <div class="cell small-2">
+          <!-- 0:00 -->
+          {{ this.state.readableCurrentTime }}
+        </div>
+        <div class="cell small-8">
+          <input #progressBar type="range" defaultValue="0" value={{state?.currentTime}} min="0" max={{state?.duration}} (input)="onSliderChangeEnd($event)">
+        </div>
+        <div class="cell small-2">
+          <!-- 0:00 -->
+          {{ this.state.readableDuration }}
+        </div>
+      </div>
+      <button (click)="onShuffleClick()"><fa-icon [icon]="faRandom"></fa-icon></button>
+      <button (click)="onPrevClick()"><fa-icon [icon]="faBackward"></fa-icon></button>
+      <button (click)="onPlayPauseClick()"><fa-icon [icon]="faPlay"></fa-icon></button>
+      <button (click)="onNextClick()"><fa-icon [icon]="faForward"></fa-icon></button>
+      <button (click)="onRepeatClick()"><fa-icon [icon]="faRedo"></fa-icon></button>
+    </div>
+    <div class="cell small-2" id="volume">
+      <input type="range" name="volume" value="100" min="0" max="1" step="0.01" (input)="onVolume($event)">
+    </div>
+  </footer>
+
 </div>

@@ -1,0 +1,42 @@
+@use 'styles/range-input';
+@use 'styles/vars';
+
+#main {
+  color: vars.$grey;
+  background-color: vars.$black;
+  padding-bottom: 15vh;
+}
+
+#seek-time {
+  background-color: vars.$black;
+  color: vars.$grey;
+  position: fixed;
+  width: 40px;
+  height: 30px;
+}
+
+footer {
+  background-color: vars.$black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15vh;
+
+  #progress-bar {
+    text-align: center;
+    width: 100%;
+  }
+
+  #controls {
+    text-align: center;
+
+    button {
+      color: vars.$grey;
+      margin: 5%;
+      &:hover {
+        color: vars.$blue;
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+@use './vars';
+// @mixin range-styles {
+//
+//   border: 1px solid #000000;
+//   height: 40px;
+//   width: 100%;
+//   border-radius: 3px;
+//   background: #ffffff;
+//   cursor: pointer;
+// }
+//
+//
+// input[type=range]::-webkit-slider-thumb {
+//   -webkit-appearance: none;
+//   margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+//   @include range-styles;
+//
+// }
+//
+// /* All the same stuff for Firefox */
+// input[type=range]::-moz-range-thumb {
+//   @include range-styles;
+// }
+//
+// /* All the same stuff for IE */
+// input[type=range]::-ms-thumb {
+//   @include range-styles;
+// }
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 5px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: vars.$grey;
+  border: 0.2px solid #010101;
+  border-radius: 1.3px;
+}
+input[type=range]::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4px;
+}
+input[type=range]:hover::-webkit-slider-runnable-track {
+  background: vars.$blue;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #3071a9;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #2a6495;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]::-ms-thumb {
+  border: 1px solid #000000;
+  height: 36px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
