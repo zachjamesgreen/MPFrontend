@@ -2,8 +2,10 @@
   <div class="grid-container">
     <div class="grid-x grid-margin-x">
       <div class="cell small-4 artist-panel" *ngFor="let artist of artists">
-        <img src="https://via.placeholder.com/150" alt="">
-        <h3>{{ artist.name }}</h3>
+        <a routerLink="/artist/{{artist.id}}">
+          <img src="https://via.placeholder.com/150" alt="">
+          <h3>{{ artist.name }}</h3>
+        </a>
       </div>
     </div>
   </div>

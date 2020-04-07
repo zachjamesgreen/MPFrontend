@@ -1,1 +1,8 @@
-<p>albums works!</p>
+<div class="grid-x">
+  <div class="cell small-4" *ngFor="let album of albums">
+    <a routerLink="/album/{{album.id}}">
+      <img src="https://via.placeholder.com/150" alt="">
+      <h3>{{album.name}}</h3>
+    </a>
+  </div>
+</div>

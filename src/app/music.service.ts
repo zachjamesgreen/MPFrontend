@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-// import { Song } from "./interfaces/song"
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,23 +9,35 @@ export class MusicService {
 
   constructor(private http: HttpClient) { }
 
-  getSongs() {
+  getSongs(): Observable<Object> {
     return this.http.get("http://localhost:3000/api/songs")
   }
 
-  getArtists() {
+  getSongsByArtist(id: number): Observable<Object> {
+    return this.http.get(`http://localhost:3000/api/songs/artist/${id}`)
+  }
+
+  getSongsByAlbum(id: number): Observable<Object> {
+    return this.http.get(`http://localhost:3000/api/songs/album/${id}`)
+  }
+
+  getArtists(): Observable<Object> {
     return this.http.get("http://localhost:3000/api/artists")
   }
 
-  getArtist(id) {
+  getArtist(id: number): Observable<Object> {
     return this.http.get(`http://localhost:3000/api/artist/${id}` )
   }
 
-  getAlbums() {
-
+  getAlbums(artist_id: number = null): Observable<Object> {
+    if (artist_id) {
+      return this.http.get(`http://localhost:3000/api/albums/${artist_id}`)
+    } else {
+      return this.http.get("http://localhost:3000/api/albums")
+    }
   }
 
-  getAlbum(id) {
+  getAlbum(id: number): Observable<Object> {
     return this.http.get(`http://localhost:3000/api/album/${id}` )
   }
 }

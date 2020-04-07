@@ -1,1 +1,11 @@
-<p>album works!</p>
+<div class="grid-x">
+  <div class="small-12">
+    <div>
+      <img src="https://via.placeholder.com/150" alt="">
+      <h3>{{ album.name }}</h3>
+    </div>
+    <div *ngFor="let song of songs" >
+      <p *ngIf="song.album.id==album.id" (click)="playSong(song)">{{ song.name }}</p>
+    </div>
+  </div>
+</div>

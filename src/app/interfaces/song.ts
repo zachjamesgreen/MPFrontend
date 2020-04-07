@@ -1,16 +1,16 @@
+import { Artist } from './artist';
+import { Album } from './album';
+
 export class Song {
   id: number;
-  artist_id: number;
-  artist: string;
-  album_id: number;
-  album_title: string;
+  artist: Artist;
+  track_nr: number | undefined;
+  album: Album;
   name: string
-  constructor(song) {
+  constructor(song: Song) {
     this.id = song.id
-    this.artist_id = song.artist_id
     this.artist = song.artist
-    this.album_id = song.album_id
-    this.album_title = song.album_title
+    this.album = song.album
     this.name = song.name
   }
 }
