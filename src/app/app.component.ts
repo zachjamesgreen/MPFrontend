@@ -19,8 +19,8 @@ export class AppComponent {
   faRandom = faRandom;
   faRedo = faRedo;
   state: StreamState;
-  songs: Array<Song>;
-  song;
+  songs: Song[];
+  song: any;
   left;
   top;
   constructor(private musicService: MusicService, private audioService: AudioService, private router: Router) {
@@ -47,6 +47,8 @@ export class AppComponent {
     }
   }
   onShuffleClick(){}
+
+  // TODO: use indexOf()
   onPrevClick(){
     let i = this.state.songs.map((s) => s.name).indexOf(this.state.song.name)
     let n = this.state.songs[i-1]

@@ -11,6 +11,7 @@ import { Song } from "./interfaces/song"
 export class AudioService {
   private stop$ = new Subject();
   private audioObj = new Audio();
+  private playPromise;
   audioEvents = [
     'ended', 'error', 'play', 'playing', 'pause', 'timeupdate', 'canplay', 'loadedmetadata', 'loadstart'
   ];
@@ -31,7 +32,7 @@ export class AudioService {
       // Play audio
       this.audioObj.src = `http://localhost/${song.artist.name}/${song.album.name}/${song.name}.mp3`;
       this.audioObj.load();
-      this.audioObj.play();
+      this.playPromise = this.audioObj.play();
 
       const handler = (event: Event) => {
         this.updateStateEvents(event);
@@ -96,6 +97,13 @@ export class AudioService {
     this.state.song = song;
     this.stateChange.next(this.state);
     this.playStream(song).subscribe()
+    // if (this.playPromise !== undefined ) {
+    //   this.playPromise.then(_ => {
+    //     this.playStream(song).subscribe()
+    //   })
+    // }
+
+
   }
 
   private stateChange: BehaviorSubject<StreamState> = new BehaviorSubject(this.state);
@@ -120,6 +128,16 @@ export class AudioService {
       case 'error':
         this.resetState();
         this.state.error = true;
+        break;
+      case 'ended':
+        let i = this.state.songs.indexOf(this.state.song)
+        let n = this.state.songs[i+1]
+        if (n) {
+          this.stop();
+          this.song(n);
+        } else {
+          this.stop();
+        }
         break;
     }
     this.stateChange.next(this.state);
