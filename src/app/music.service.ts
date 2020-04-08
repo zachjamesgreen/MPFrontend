@@ -45,4 +45,8 @@ export class MusicService {
   search(q: string): Observable<Object> {
     return this.http.get(`${this.API_URL}/search?q=${q}`)
   }
+
+  upload(files): Observable<Object> {
+    return this.http.post(`${this.API_URL}/upload`, files)
+  }
 }
