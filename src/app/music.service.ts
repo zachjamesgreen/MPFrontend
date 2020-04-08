@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -46,7 +46,8 @@ export class MusicService {
     return this.http.get(`${this.API_URL}/search?q=${q}`)
   }
 
-  upload(files): Observable<Object> {
-    return this.http.post(`${this.API_URL}/upload`, files)
+  upload(formData): Observable<Object> {
+    // let headers = new HttpHeaders({'Content-Type': 'multipart/form-data','content-type': 'audio/mp3'})
+    return this.http.post(`${this.API_URL}/upload`, formData,)
   }
 }

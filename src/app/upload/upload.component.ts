@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MusicService } from '../music.service';
 
 @Component({
   selector: 'app-upload',
@@ -9,14 +10,25 @@ import { FormControl } from '@angular/forms';
 export class UploadComponent implements OnInit {
   files = new FormControl('')
 
-  constructor() { }
+  constructor(private musicService: MusicService) { }
 
-  ngOnInit(): void {
-    this.files.valueChanges.subscribe((a) => console.log(a))
-  }
+  ngOnInit(): void {}
 
   upload(f) {
-    console.log(f.files)
+    var formData = new FormData();
+    console.log(f.files[0])
+    for (let i = 0; i < f.files.length; i++) {
+      formData.append(`${i}`, f.files[i])
+    }
+
+
+    this.musicService.upload(formData)
+      .subscribe((res) => {
+        console.log(res)
+      },
+      (error) => {
+        console.error(error)
+      })
   }
 
 }
