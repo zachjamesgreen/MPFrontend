@@ -4,6 +4,7 @@ import { faBackward,faPlay,faForward,faRandom,faRedo } from '@fortawesome/free-s
 import { StreamState } from './interfaces/stream-state';
 import { MusicService } from './music.service'
 import { Song } from "./interfaces/song"
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,7 @@ export class AppComponent {
   song;
   left;
   top;
-  constructor(private musicService: MusicService, private audioService: AudioService) {
+  constructor(private musicService: MusicService, private audioService: AudioService, private router: Router) {
     // this.musicService.getSongs()
     //   .subscribe((data) => {
     //     this.songs = data
@@ -103,5 +104,9 @@ export class AppComponent {
     console.log("EVENT")
     this.top = $event.clientX;
     this.left = $event.clientY;
+  }
+
+  doSearch(e) {
+    this.router.navigateByUrl(`/search?q=${e}`, { skipLocationChange: true, queryParams: { 'q': e } });
   }
 }

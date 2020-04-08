@@ -12,7 +12,8 @@ import { ArtistComponent } from './artist/artist.component';
 import { AudioService } from "./audioplayer.service";
 import { ArtistsComponent } from './artists/artists.component';
 import { AlbumComponent } from './album/album.component';
-import { AlbumsComponent } from './albums/albums.component'
+import { AlbumsComponent } from './albums/albums.component';
+import { SearchComponent } from './search/search.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AlbumsComponent } from './albums/albums.component'
     ArtistComponent,
     ArtistsComponent,
     AlbumComponent,
-    AlbumsComponent
+    AlbumsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

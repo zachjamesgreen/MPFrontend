@@ -5,6 +5,7 @@ import { ArtistComponent } from "./artist/artist.component"
 import { ArtistsComponent } from "./artists/artists.component"
 import { AlbumComponent } from "./album/album.component"
 import { AlbumsComponent } from "./albums/albums.component"
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'artists', component: ArtistsComponent },
   { path: 'album/:id', component: AlbumComponent },
   { path: 'albums', component: AlbumsComponent },
+  { path: 'search', component: SearchComponent },
   { path: '', redirectTo: '/songs', pathMatch: 'full' },
 ];
 

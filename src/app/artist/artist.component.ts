@@ -37,8 +37,8 @@ export class ArtistComponent implements OnInit {
       })
   }
 
-  playSong(song){
-    this.audioService.setSongs(this.artist.songs)
+  playSong(song: Song){
+    this.audioService.setSongs(this.songs)
     this.audioService.song(song)
   }
 

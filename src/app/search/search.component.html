@@ -1,0 +1,21 @@
+<div class="grid-x">
+  <div class="cell small-12">
+    <input type="text" placeholder="Search" #s (keyup)="search(s.value)">
+  </div>
+  <div class="cell small-12" >
+    <h3>Artists</h3>
+    <div *ngFor="let artist of artists">
+      <h4><a routerLink="/artist/{{artist.id}}">{{ artist.name }}</a></h4>
+    </div>
+  </div>
+  <div class="cell small-12" >
+    <h3>Albums</h3>
+    <div *ngFor="let album of albums">
+      <h4><a routerLink="/artist/{{album.id}}">{{album.name}}</a></h4>
+    </div>
+  </div>
+  <div class="cell small-12">
+    <h3>Songs</h3>
+    <div *ngFor="let song of songs" (click)="playSong(song)">{{song.name}} by <a routerLink="/artist/{{song.artist.id}}">{{song.artist.name}}</a></div>
+  </div>
+</div>

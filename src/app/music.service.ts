@@ -6,38 +6,43 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MusicService {
+  API_URL: string = 'http://localhost:3000/api'
 
   constructor(private http: HttpClient) { }
 
   getSongs(): Observable<Object> {
-    return this.http.get("http://localhost:3000/api/songs")
+    return this.http.get(`${this.API_URL}/songs`)
   }
 
   getSongsByArtist(id: number): Observable<Object> {
-    return this.http.get(`http://localhost:3000/api/songs/artist/${id}`)
+    return this.http.get(`${this.API_URL}/songs/artist/${id}`)
   }
 
   getSongsByAlbum(id: number): Observable<Object> {
-    return this.http.get(`http://localhost:3000/api/songs/album/${id}`)
+    return this.http.get(`${this.API_URL}/songs/album/${id}`)
   }
 
   getArtists(): Observable<Object> {
-    return this.http.get("http://localhost:3000/api/artists")
+    return this.http.get(`${this.API_URL}/artists`)
   }
 
   getArtist(id: number): Observable<Object> {
-    return this.http.get(`http://localhost:3000/api/artist/${id}` )
+    return this.http.get(`${this.API_URL}/artist/${id}` )
   }
 
   getAlbums(artist_id: number = null): Observable<Object> {
     if (artist_id) {
-      return this.http.get(`http://localhost:3000/api/albums/${artist_id}`)
+      return this.http.get(`${this.API_URL}/albums/${artist_id}`)
     } else {
-      return this.http.get("http://localhost:3000/api/albums")
+      return this.http.get(`${this.API_URL}/albums`)
     }
   }
 
   getAlbum(id: number): Observable<Object> {
-    return this.http.get(`http://localhost:3000/api/album/${id}` )
+    return this.http.get(`${this.API_URL}/album/${id}` )
+  }
+
+  search(q: string): Observable<Object> {
+    return this.http.get(`${this.API_URL}/search?q=${q}`)
   }
 }
