@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MusicService {
-  API_URL: string = 'http://localhost:3000/api'
+  API_URL: string = 'http://phpplayer.local/api'
 
   constructor(private http: HttpClient) { }
 
