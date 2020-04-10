@@ -30,7 +30,7 @@ export class AudioService {
   private streamObservable(song) {
     return new Observable(observer => {
       // Play audio
-      this.audioObj.src = `http://music.local/${song.artist.name}/${song.album.name}/${song.name}.mp3`;
+      this.audioObj.src = `http://music.zachgreen.codes/${song.artist.name}/${song.album.name}/${song.name}.mp3`;
       this.audioObj.load();
       this.playPromise = this.audioObj.play();
 
