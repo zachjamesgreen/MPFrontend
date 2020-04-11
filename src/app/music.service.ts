@@ -48,6 +48,6 @@ export class MusicService {
 
   upload(formData): Observable<Object> {
     // let headers = new HttpHeaders({'Content-Type': 'multipart/form-data','content-type': 'audio/mp3'})
-    return this.http.post(`${this.API_URL}/upload`, formData,)
+    return this.http.post(`${this.API_URL}/upload`, formData)
   }
 }
