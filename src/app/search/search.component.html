@@ -11,7 +11,7 @@
   <div class="cell small-12" *ngIf="albums">
     <h3>Albums</h3>
     <div *ngFor="let album of albums">
-      <h4><a routerLink="/artist/{{album.id}}">{{album.name}}</a></h4>
+      <h4><a routerLink="/artist/{{album.id}}">{{album.title}}</a></h4>
     </div>
   </div>
   <div class="cell small-12" *ngIf="songs">

@@ -6,7 +6,7 @@
   <div class="small-12" *ngFor="let album of albums">
     <div>
       <img src="https://via.placeholder.com/50" alt="">
-      <h5>{{ album.name }}</h5>
+      <h5>{{ album.title }}</h5>
     </div>
     <div *ngFor="let song of songs" >
       <p *ngIf="song.album.id==album.id" (click)="playSong(song)">{{ song.name }}</p>

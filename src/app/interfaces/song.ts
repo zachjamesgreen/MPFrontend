@@ -7,10 +7,12 @@ export class Song {
   track_nr: number | undefined;
   album: Album;
   name: string
+  filename: string
   constructor(song: Song) {
     this.id = song.id
     this.artist = song.artist
     this.album = song.album
     this.name = song.name
+    this.filename = song.filename
   }
 }
