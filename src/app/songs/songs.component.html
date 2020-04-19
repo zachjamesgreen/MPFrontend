@@ -11,7 +11,7 @@
         <tr *ngFor="let song of songs" (click)="playSong(song)">
           <td>{{song.name}}</td>
           <td><a routerLink="/artist/{{song.artist.id}}">{{ song.artist.name }}</a></td>
-          <td><a routerLink="/album/{{song.album.id}}">{{ song.album.name }}</a></td>
+          <td><a routerLink="/album/{{song.album.id}}">{{ song.album.title }}</a></td>
         </tr>
       </tbody>
 
