@@ -1,12 +1,27 @@
-<div class="grid-x">
-  <div class="grid-container">
-    <div class="grid-x grid-margin-x">
-      <div class="cell small-4 artist-panel" *ngFor="let artist of artists">
+<div id="artists_container">
+  <div class="grid-x">
+    <h1>Artists</h1>
+    <div id="input_fields">
+      <input type="text" id="filter" placeholder="Filter">
+      <label for="sort">Sort By </label>
+      <select id="sort">
+        <option value="name">Name</option>
+        <option value="added">Added</option>
+        <option value="listens">Listens</option>
+      </select>
+
+    </div>
+  </div>
+  <hr>
+
+
+
+    <div class="grid-x small-up-5">
+      <div class="cell artist-panel" *ngFor="let artist of artists">
         <a routerLink="/artist/{{artist.id}}">
-          <img src="https://via.placeholder.com/150" alt="">
+          <img src="https://via.placeholder.com/225" alt="">
           <h3>{{ artist.name }}</h3>
         </a>
       </div>
     </div>
-  </div>
 </div>
