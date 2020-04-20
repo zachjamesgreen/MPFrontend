@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AudioService } from "./audioplayer.service"
-import { faBackward,faPlay,faForward,faRandom,faRedo } from '@fortawesome/free-solid-svg-icons';
+import { faBackward,faPlay,faForward,faRandom,faRedo,faHeart,faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import { StreamState } from './interfaces/stream-state';
 import { MusicService } from './music.service'
 import { Song } from "./interfaces/song"
@@ -18,6 +18,8 @@ export class AppComponent {
   faForward = faForward;
   faRandom = faRandom;
   faRedo = faRedo;
+  faHeart = faHeart;
+  faVolumeUp = faVolumeUp;
   state: StreamState;
   songs: Song[];
   song: any;

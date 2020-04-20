@@ -7,6 +7,41 @@
   padding-bottom: 15vh;
 }
 
+aside {
+  text-align: center;
+  display: block;
+  a {
+    display: inherit;
+    text-decoration: none;
+    height: 5vh;
+    padding-top: 1.25vh;
+    color: vars.$grey;
+    &:hover, &:focus {
+      color: vars.$black;
+      background: vars.$grey;
+    }
+  }
+}
+
+#album_art img {
+    width: 75%;
+    margin-left: 5%;
+    margin-top: 5%;
+  }
+#song_name {
+  margin-top: 12%;
+  h6 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    &:hover {
+      overflow: visible;
+    }
+  }
+}
+
+
 #seek-time {
   background-color: vars.$black;
   color: vars.$grey;
@@ -35,12 +70,37 @@ footer {
   #controls {
     text-align: center;
 
-    button {
-      color: vars.$grey;
-      margin: 5%;
-      &:hover {
-        color: vars.$blue;
-      }
-    }
+
+  }
+}
+
+#play_btn {
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: #fff;
+  border-radius: 50%;
+  font-size: 1.5rem
+}
+
+#controls_btns {
+  margin-left: -6%;
+}
+
+button {
+  color: vars.$grey;
+  margin: 0.75rem 1.5rem;
+  &:hover {
+    color: vars.$blue;
+  }
+}
+
+#volume {
+  button {
+    margin: 10%;
+  }
+  input {
+    padding-bottom: 1%;
+    background-color: vars.$black;
+    width: 50%;
   }
 }

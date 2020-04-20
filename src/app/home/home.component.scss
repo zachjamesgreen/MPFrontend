@@ -1,0 +1,17 @@
+#home_container {
+  padding-left: 3vw;
+  width: 90vw;
+}
+
+.card_row {
+  padding-bottom: 3vh;
+}
+
+.home_card {
+  display: inline;
+  height: 100%;
+  img {
+    height: 225px;
+    width: 225px;
+  }
+}

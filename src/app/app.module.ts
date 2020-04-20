@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faBackward,faPlay,faForward,faRandom,faRedo } from '@fortawesome/free-solid-svg-icons';
+import { faBackward,faPlay,faForward,faRandom,faRedo,faHeart,faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SongsComponent } from './songs/songs.component';
@@ -15,7 +15,8 @@ import { ArtistsComponent } from './artists/artists.component';
 import { AlbumComponent } from './album/album.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { SearchComponent } from './search/search.component';
-import { UploadComponent } from './upload/upload.component'
+import { UploadComponent } from './upload/upload.component';
+import { HomeComponent } from './home/home.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UploadComponent } from './upload/upload.component'
     AlbumComponent,
     AlbumsComponent,
     SearchComponent,
-    UploadComponent
+    UploadComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,6 @@ import { UploadComponent } from './upload/upload.component'
 export class AppModule {
   constructor(library: FaIconLibrary) {
     // Add an icon to the library for convenient access in other components
-    library.addIcons(faBackward,faPlay,faForward,faRandom,faRedo);
+    library.addIcons(faBackward,faPlay,faForward,faRandom,faRedo,faHeart,faVolumeUp);
   }
 }

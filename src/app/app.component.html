@@ -1,15 +1,35 @@
 <div class="grid-x" id="main">
 
-  <app-sidebar (onSearch)="doSearch($event)"></app-sidebar>
+  <aside class="grid-x small-1">
+    <h4>Player</h4>
+    <a routerLink="/">Home</a>
+    <a routerLink="/songs">Songs</a>
+    <a routerLink="/albums">Albums</a>
+    <a routerLink="/artists">Artists</a>
+    <a routerLink="/">Playlists</a>
+    <a routerLink="/search">Search</a>
+  </aside>
+
+<!-- ### ROUTER ### -->
   <router-outlet></router-outlet>
+<!-- ### ROUTER ### -->
 
   <footer class="grid-x">
 
     <div class="cell small-2" id='info'>
-      <p>
-        <!-- Long Song Name with Stuff In it (feat. Blah) -->
-        {{ this.state.song?.name }}
-      </p>
+      <div class="grid-x">
+        <div id="album_art" class="cell small-6">
+          <img src="https://via.placeholder.com/150" alt="">
+        </div>
+        <div id="song_name" class="cell small-6">
+          <h6>
+            Million Dollar Bills
+            <!-- {{ this.state.song?.name }} -->
+          </h6>
+          <p>Lorde</p>
+        </div>
+      </div>
+
     </div>
     <div class="cell small-8" id='controls'>
       <div class="grid-x" id="progress-bar">
@@ -25,13 +45,17 @@
           {{ this.state.readableDuration }}
         </div>
       </div>
-      <button (click)="onShuffleClick()"><fa-icon [icon]="faRandom"></fa-icon></button>
-      <button (click)="onPrevClick()"><fa-icon [icon]="faBackward"></fa-icon></button>
-      <button (click)="onPlayPauseClick()"><fa-icon [icon]="faPlay"></fa-icon></button>
-      <button (click)="onNextClick()"><fa-icon [icon]="faForward"></fa-icon></button>
-      <button (click)="onRepeatClick()"><fa-icon [icon]="faRedo"></fa-icon></button>
+      <div id="controls_btns">
+        <button (click)="onRepeatClick()"><fa-icon [icon]="faHeart"></fa-icon></button>
+        <button (click)="onShuffleClick()"><fa-icon [icon]="faRandom"></fa-icon></button>
+        <button (click)="onPrevClick()"><fa-icon [icon]="faBackward"></fa-icon></button>
+        <button id="play_btn" (click)="onPlayPauseClick()"><fa-icon [icon]="faPlay"></fa-icon></button>
+        <button (click)="onNextClick()"><fa-icon [icon]="faForward"></fa-icon></button>
+        <button (click)="onRepeatClick()"><fa-icon [icon]="faRedo"></fa-icon></button>
+      </div>
     </div>
     <div class="cell small-2" id="volume">
+      <button (click)="onRepeatClick()"><fa-icon [icon]="faVolumeUp"></fa-icon></button>
       <input type="range" name="volume" value="100" min="0" max="1" step="0.01" (input)="onVolume($event)">
     </div>
   </footer>
