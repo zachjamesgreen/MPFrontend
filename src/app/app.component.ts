@@ -59,7 +59,7 @@ export class AppComponent {
   }
 
   spotifyAuth() {
-    window.location.href = `https://accounts.spotify.com/authorize?client_id=${ENV.spotify_key}&redirect_uri=http://localhost:4200&scope=user-read-private user-read-email&response_type=code`
+    window.location.href = `https://accounts.spotify.com/authorize?client_id=${ENV.spotify_key}&redirect_uri=${ENV.redirect_uri}&scope=user-read-private user-read-email&response_type=code`
   }
 
 
