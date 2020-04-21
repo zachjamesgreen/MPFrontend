@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment as ENV } from '../../environments/environment';
+import { environment as ENV } from '../../environments/env';
 import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpotifyService {
-  access_token
-  expires_in
-  refresh_token
-  scope
   constructor(private http: HttpClient) { }
 
-  auth(c) {
+  auth(c: string) {
     let body = encodeURI(`grant_type=authorization_code&code=${c}&redirect_uri=http://localhost:4200`)
     let auth = btoa(`${ENV.spotify_key}:${ENV.spotify_secret}`)
     let headers = new HttpHeaders({
@@ -22,7 +18,7 @@ export class SpotifyService {
       'Content-Type': 'application/x-www-form-urlencoded'
     })
     this.http.post('https://accounts.spotify.com/api/token', body, {headers: headers})
-      .subscribe((data) => {
+      .subscribe((data: any) => {
         localStorage.access_token = data.access_token
         localStorage.token_type = data.token_type
         localStorage.scope = data.scope
@@ -39,7 +35,7 @@ export class SpotifyService {
       'Content-Type': 'application/x-www-form-urlencoded'
     })
     this.http.post('https://accounts.spotify.com/api/token', body, {headers: headers})
-      .subscribe((data) => {
+      .subscribe((data: any) => {
         localStorage.access_token = data.access_token
         localStorage.token_type = data.token_type
         localStorage.scope = data.scope
@@ -48,9 +44,13 @@ export class SpotifyService {
       })
   }
 
-  //param type: comma delimted list of types
-  //param q: query to search
-  search(type, q): Observable<Object> {
+  /**
+   * [search description]
+   * @param  type [string Comma delimited list]
+   * @param  q    [string]
+   * @return      [Observable]
+   */
+  search(type: string, q: string): Observable<Object> {
     let url = `https://api.spotify.com/v1/search?query=${q}&type=${type}&limit=1`
     let headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.access_token}`

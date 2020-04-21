@@ -45,9 +45,4 @@ export class MusicService {
   search(q: string): Observable<Object> {
     return this.http.get(`${this.API_URL}/search?q=${q}`)
   }
-
-  upload(formData): Observable<Object> {
-    // let headers = new HttpHeaders({'Content-Type': 'multipart/form-data','content-type': 'audio/mp3'})
-    return this.http.post(`${this.API_URL}/upload`, formData)
-  }
 }

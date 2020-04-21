@@ -11,7 +11,7 @@ import { Song } from "../interfaces/song"
 export class AudioService {
   private stop$ = new Subject();
   private audioObj = new Audio();
-  private playPromise;
+  private playPromise: Promise<any>;
   audioEvents = [
     'ended', 'error', 'play', 'playing', 'pause', 'timeupdate', 'canplay', 'loadedmetadata', 'loadstart'
   ];
@@ -27,7 +27,7 @@ export class AudioService {
     song: undefined,
   };
 
-  private streamObservable(song) {
+  private streamObservable(song: Song) {
     return new Observable(observer => {
       // Play audio
       this.audioObj.src = `http://phpplayer.local/music/${song.artist.name}/${song.album.title}/${song.filename}`;
@@ -52,19 +52,19 @@ export class AudioService {
     });
   }
 
-  private addEvents(obj, events, handler) {
+  private addEvents(obj: any, events: Array<any>, handler: Function) {
     events.forEach(event => {
       obj.addEventListener(event, handler);
     });
   }
 
-  private removeEvents(obj, events, handler) {
+  private removeEvents(obj: any, events: Array<any>, handler: Function) {
     events.forEach(event => {
       obj.removeEventListener(event, handler);
     });
   }
 
-  playStream(song) {
+  playStream(song: Song) {
     return this.streamObservable(song).pipe(takeUntil(this.stop$));
   }
 
@@ -80,7 +80,7 @@ export class AudioService {
     this.stop$.next();
   }
 
-  seekTo(seconds) {
+  seekTo(seconds: number) {
     this.audioObj.currentTime = seconds;
   }
 
@@ -89,11 +89,11 @@ export class AudioService {
     return moment.utc(momentTime).format(format);
   }
 
-  volume(v){
+  volume(v: number){
     this.audioObj.volume = v
   }
 
-  song(song) {
+  song(song: Song) {
     this.state.song = song;
     this.stateChange.next(this.state);
     this.playStream(song).subscribe()

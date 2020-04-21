@@ -3,12 +3,10 @@ import { AudioService } from "./service/audioplayer.service";
 import { faBackward,faPlay,faForward,faRandom,faRedo,faHeart,faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 import { faSpotify } from '@fortawesome/free-brands-svg-icons'
 import { StreamState } from './interfaces/stream-state';
-import { MusicService } from './service/music.service';
 import { Song } from "./interfaces/song";
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { SpotifyService } from "./service/spotify.service";
-import { environment as ENV } from '../environments/environment';
-import { map } from 'rxjs/operators';
+import { environment as ENV } from '../environments/env';
 import * as moment from 'moment';
 
 @Component({
@@ -31,10 +29,8 @@ export class AppComponent {
   song: any;
   spotifyLoggedIn = false;
   constructor(
-    private musicService: MusicService,
     private audioService: AudioService,
     private spotify: SpotifyService,
-    private route: ActivatedRoute,
     private router: Router) {
     // this.musicService.getSongs()
     //   .subscribe((data) => {
@@ -51,7 +47,7 @@ export class AppComponent {
     let code = urlParams.get('code');
 
     if (localStorage.access_token) {
-      let tokenCheck = moment(localStorage.expires_in) - moment()
+      let tokenCheck = <any>moment(localStorage.expires_in) - <any>moment()
       if (Math.sign(tokenCheck) === -1) {
         this.spotify.refreshToken()
       }
@@ -123,20 +119,14 @@ export class AppComponent {
   isLastPlaying() {
   }
 
-  onVolume(e){
+  onVolume(e: any){
     this.audioService.volume(e.target.value)
   }
-  onSliderChangeEnd(change) {
+  onSliderChangeEnd(change: any) {
     this.audioService.seekTo(change.target.value);
   }
 
-  mousePos($event) {
-    console.log("EVENT")
-    this.top = $event.clientX;
-    this.left = $event.clientY;
-  }
-
-  doSearch(e) {
+  doSearch(e: any) {
     this.router.navigateByUrl(`/search?q=${e}`, { skipLocationChange: true, queryParams: { 'q': e } });
   }
 }
