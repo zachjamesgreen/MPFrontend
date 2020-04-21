@@ -4,7 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 import * as moment from 'moment';
 import { StreamState } from '../interfaces/stream-state';
 import { Song } from "../interfaces/song"
-import { environment as ENV } from '../../environments/env';
+import { environment as ENV } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

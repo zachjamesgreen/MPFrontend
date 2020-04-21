@@ -6,7 +6,7 @@ import { StreamState } from './interfaces/stream-state';
 import { Song } from "./interfaces/song";
 import { Router } from '@angular/router';
 import { SpotifyService } from "./service/spotify.service";
-import { environment as ENV } from '../environments/env';
+import { environment as ENV } from '../environments/environment';
 import * as moment from 'moment';
 
 @Component({

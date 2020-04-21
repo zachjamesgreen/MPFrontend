@@ -24,7 +24,7 @@ export class ArtistsComponent implements OnInit {
       .subscribe((artists: Artist[]) => {
         a = artists.map((artist) => {
           this.spotify.search('artist', artist.name)
-            .subscribe((body) => {
+            .subscribe((body: any) => {
               artist.image = body.artists.items[0].images[0].url
               this.artists.push(new Artist(artist))
             })

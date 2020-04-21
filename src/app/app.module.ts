@@ -16,7 +16,6 @@ import { ArtistsComponent } from './artists/artists.component';
 import { AlbumComponent } from './album/album.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { SearchComponent } from './search/search.component';
-import { UploadComponent } from './upload/upload.component';
 import { HomeComponent } from './home/home.component'
 
 @NgModule({
@@ -29,7 +28,6 @@ import { HomeComponent } from './home/home.component'
     AlbumComponent,
     AlbumsComponent,
     SearchComponent,
-    UploadComponent,
     HomeComponent
   ],
   imports: [
