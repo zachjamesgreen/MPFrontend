@@ -19,7 +19,7 @@
     <div class="grid-x small-up-5">
       <div class="cell artist-panel" *ngFor="let artist of artists">
         <a routerLink="/artist/{{artist.id}}">
-          <img src="https://via.placeholder.com/225" alt="">
+          <img src="{{artist?.image}}" alt="">
           <h3>{{ artist.name }}</h3>
         </a>
       </div>

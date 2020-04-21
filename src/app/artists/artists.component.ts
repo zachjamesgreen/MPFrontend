@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MusicService } from "../music.service"
+import { MusicService } from "../service/music.service"
+import { SpotifyService } from "../service/spotify.service"
 import { Artist } from "../interfaces/artist"
 
 @Component({
@@ -9,17 +10,25 @@ import { Artist } from "../interfaces/artist"
 })
 export class ArtistsComponent implements OnInit {
   artists = new Array
-  constructor(public musicService: MusicService) {
-    this.musicService.getArtists()
-      .subscribe((artists: Artist[]) => {
-        artists.map((artist) => {
-          this.artists.push(new Artist(artist))
-        })
-      })
+  constructor(public musicService: MusicService, public spotify: SpotifyService) {
 
   }
 
   ngOnInit(): void {
+    this.getArtists()
   }
 
+  getArtists() {
+    let a;
+    this.musicService.getArtists()
+      .subscribe((artists: Artist[]) => {
+        a = artists.map((artist) => {
+          this.spotify.search('artist', artist.name)
+            .subscribe((body) => {
+              artist.image = body.artists.items[0].images[0].url
+              this.artists.push(new Artist(artist))
+            })
+        })
+      })
+  }
 }

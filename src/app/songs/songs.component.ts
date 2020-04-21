@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { AudioService } from "../audioplayer.service"
-import { MusicService } from "../music.service"
+import { AudioService } from "../service/audioplayer.service"
+import { MusicService } from "../service/music.service"
 import { Song } from "../interfaces/song"
 
 @Component({

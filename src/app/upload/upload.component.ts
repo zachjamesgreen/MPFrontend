@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MusicService } from '../music.service';
+import { MusicService } from '../service/music.service';
 
 @Component({
   selector: 'app-upload',

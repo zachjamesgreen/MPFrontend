@@ -8,6 +8,10 @@
     <a routerLink="/artists">Artists</a>
     <a routerLink="/">Playlists</a>
     <a routerLink="/search">Search</a>
+
+    <a *ngIf="spotifyLoggedIn; else elseBlock" >Spotify</a>
+    <ng-template #elseBlock><a (click)="spotifyAuth()">Spotify Login</a></ng-template>
+
   </aside>
 
 <!-- ### ROUTER ### -->

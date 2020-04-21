@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MusicService } from "../music.service"
+import { MusicService } from "../service/music.service"
 import { Artist } from "../interfaces/artist"
 import { Album } from "../interfaces/album"
 import { Song } from "../interfaces/song"
 import { ActivatedRoute } from '@angular/router';
-import { AudioService } from "../audioplayer.service"
+import { AudioService } from "../service/audioplayer.service"
 
 @Component({
   selector: 'app-album',
