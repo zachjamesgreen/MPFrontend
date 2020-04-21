@@ -45,14 +45,10 @@ export class AppComponent {
   ngOnInit() {
     let urlParams = new URLSearchParams(window.location.search);
     let code = urlParams.get('code');
-
-    if (localStorage.access_token) {
-      let tokenCheck = <any>moment(localStorage.expires_in) - <any>moment()
-      if (Math.sign(tokenCheck) === -1) {
-        this.spotify.refreshToken()
-      }
+    if (localStorage.refresh_token) {
+      this.spotify.refreshToken()
       this.spotifyLoggedIn = true
-    } else if (code) {
+    } else {
       this.spotify.auth(code)
     }
     console.log("Gotta go hard! I gotta elevate!")
