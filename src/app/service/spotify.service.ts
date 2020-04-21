@@ -11,7 +11,7 @@ export class SpotifyService {
   constructor(private http: HttpClient) { }
 
   auth(c: string) {
-    let body = encodeURI(`grant_type=authorization_code&code=${c}&redirect_uri=http://localhost:4200`)
+    let body = encodeURI(`grant_type=authorization_code&code=${c}&redirect_uri=${ENV.redirect_uri}`)
     let auth = btoa(`${ENV.spotify_key}:${ENV.spotify_secret}`)
     let headers = new HttpHeaders({
       'Authorization': `Basic ${auth}`,

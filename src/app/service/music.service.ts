@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment as ENV } from '../../environments/env';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MusicService {
-  API_URL: string = 'http://phpplayer.local/api'
+  API_URL: string = ENV.api_uri;
 
   constructor(private http: HttpClient) { }
 
