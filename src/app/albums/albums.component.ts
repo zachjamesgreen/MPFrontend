@@ -14,9 +14,7 @@ export class AlbumsComponent implements OnInit {
   ngOnInit(): void {
     this.musicService.getAlbums()
       .subscribe((albums: Album[]) => {
-        this.albums = albums.map((album) => {
-          return new Album(album)
-        })
+        this.albums = albums
       })
   }
 

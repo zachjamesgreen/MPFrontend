@@ -2,10 +2,10 @@
   <div class="small-12">
     <div>
       <img src="https://via.placeholder.com/150" alt="">
-      <h3>{{ album.title }}</h3>
+      <h3>{{ album }}</h3>
     </div>
     <div *ngFor="let song of songs" >
-      <p *ngIf="song.album.id==album.id" (click)="playSong(song)">{{ song.name }}</p>
+      <p *ngIf="song.album_title==album" (click)="playSong(song)">{{ song.title }}</p>
     </div>
   </div>
 </div>

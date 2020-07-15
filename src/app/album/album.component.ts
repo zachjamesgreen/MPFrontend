@@ -12,23 +12,19 @@ import { AudioService } from "../service/audioplayer.service"
   styleUrls: ['./album.component.scss']
 })
 export class AlbumComponent implements OnInit {
-  album: Album;
+  album: string;
   songs: Song[];
   constructor(private route: ActivatedRoute, public musicService: MusicService, public audioService: AudioService) { }
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.musicService.getAlbum(id)
-      .subscribe((album: Album) => {
-        this.album = new Album(album)
-        this.musicService.getSongsByAlbum(this.album.id)
-          .subscribe((songs: Song[]) => {
-            this.songs = songs.map((song) => {
-              return new Song(song)
-            })
-          })
-          console.log(this.album)
+    const id = this.route.snapshot.paramMap.get('id');
+    this.musicService.getSongsByAlbum(id)
+    .subscribe((songs: Song[]) => {
+      this.songs = songs.map((song) => {
+        return new Song(song)
       })
+      this.album = this.songs[0].album_title
+    })
   }
 
   playSong(song){
